@@ -1,0 +1,60 @@
+---
+title: 'Anscombe''s Quartet: A Presentation Using ioslides'
+author: "Tim Pearce"
+date: "28 October 2017"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Anscombe's  Quartet
+
+Anscombe's Quartet consists of four pairs of vectors, with each of the x_i and y_j having:
+
+- same mean
+- same variance
+- same linear correlation between each x_i and the corresponding series y_i
+
+but different relationships between the x and y series.
+
+## Load R prerequisites
+
+```{r echo = FALSE}
+library(datasets)
+library(plotly)
+attach(anscombe)
+```
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+## Set 1
+
+Moderately well-correlated data
+```{r, echo = FALSE}
+plot_ly(x = x1, y = y1, type = "scatter", mode = "markers") %>% add_lines(x = x1, y = lm(y1 ~ x1))
+```
+
+## Set 2
+
+Quadratically-correlated data
+```{r, echo = FALSE}
+plot_ly(x = x2, y = y2, type = "scatter", mode = "markers") %>% add_lines(x = x2, y = lm(y2 ~ x2))
+```
+
+## Set 3
+
+Perfectly linearly-correlated data with one outlier
+```{r, echo = FALSE}
+plot_ly(x = x3, y = y3, type = "scatter", mode = "markers") %>% add_lines(x = x3, y = lm(y3 ~ x3))
+```
+
+## Set 4
+
+Independent data sets with one measurement error
+```{r, echo = FALSE}
+plot_ly(x = x4, y = y4, type = "scatter", mode = "markers") %>% add_lines(x = x1, y = lm(y1 ~ x1))
+```
+
